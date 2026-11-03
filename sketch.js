@@ -2,6 +2,8 @@
 let enterButton;
 let a1Button;
 let a2Button;
+let a3Button;
+let a4Button;
 let screen = 0;
 
 /* SETUP RUNS ONCE */
@@ -37,6 +39,22 @@ function setup() {
   };
 }
 
+a3Button = {
+  x: 200,
+  y: 300,
+  w: 100,
+  h: 50,
+  text: "A3"
+};
+
+a4Button = {
+  x: 400,
+  y: 300,
+  w: 100,
+  h: 50,
+  text: "A4"
+};
+
 /* DRAW LOOP REPEATS */
 function draw() {
   background("pink");
@@ -48,8 +66,12 @@ function draw() {
     showScreen1();
   } else if (screen == 2) {
     showScreen2();
-  } else if (screen == 5) { // End Game Screen
+  } else if (screen == 3) {
     showScreen3();
+  } else if (screen == 4) {
+    showScreen4();
+  } else if (screen == 5) { // End Game Screen
+    showScreen5();
   }
 }
 
@@ -70,12 +92,41 @@ function mousePressed() {
       screen = 2;
       print("Display screen 2");
     } else if (buttonClicked(a2Button)) {
-      screen = 5;
-      print("Display screen 5");
+      screen = 3;
+      print("Display screen 3");
     }
   }
 
   // Screen 2 -> Screen 3 or 4
+  else if (screen == 2) {
+    if (buttonClicked(a3Button)) {
+      screen = 3;
+      print("Display screen 3");
+    } else if (buttonClicked(a4Button)) {
+      screen = 4;
+      print("Display screen 4");
+    }
+  }
+  // Screen 3 -> Screen 4 or 5
+  else if (screen == 3) {
+    if (buttonClicked(a3Button)) {
+      screen = 4;
+      print("Display screen 4");
+    } else if (buttonClicked(a4Button)) {
+      screen = 5;
+      print("Display screen 5");
+    }
+  }
+  // Screen 4 -> Screen 5
+  else if (screen == 4) {
+    if (buttonClicked(a3Button)) {
+      screen = 5;
+      print("Display screen 5");
+    } else if (buttonClicked(a4Button)) {
+      screen = 5;
+      print("Display screen 5");
+    }
+  }
 
 }
 
@@ -148,9 +199,31 @@ function showScreen2() {
   // ADD: Draw B2 Button
 }
 
-// ADD: Screen 3 Function
+function showScreen3() {
+  fill("black");
+  textSize(20);
+  text(
+    "Welcome to screen 3. Make your third choice.",
+    width / 2,
+    height / 2 - 100
+  );
 
-// ADD: Screen 4 Function
+  drawButton(a3Button);
+  drawButton(a4Button);
+}
+
+function showScreen4() {
+  fill("black");
+  textSize(20);
+  text(
+    "Welcome to screen 4. Make your fourth choice.",
+    width / 2,
+    height / 2 - 100
+  );
+
+  drawButton(a3Button);
+  drawButton(a4Button);
+}
 
 function showScreen5() {
   fill("black");
