@@ -57,7 +57,7 @@ a4Button = {
 
 /* DRAW LOOP REPEATS */
 function draw() {
-  background("pink");
+  background("black");
 
   // Display the correct screen
   if (screen == 0) {
@@ -109,17 +109,17 @@ function mousePressed() {
   }
   // Screen 3 -> Screen 4 or 5
   else if (screen == 3) {
-    if (buttonClicked(a3Button)) {
+    if (buttonClicked(a4Button)) {
       screen = 4;
       print("Display screen 4");
-    } else if (buttonClicked(a4Button)) {
+    } else if (buttonClicked(a3Button)) {
       screen = 5;
       print("Display screen 5");
     }
   }
   // Screen 4 -> Screen 5
   else if (screen == 4) {
-    if (buttonClicked(a3Button)) {
+    if (buttonClicked(a4Button)) {
       screen = 5;
       print("Display screen 5");
     } else if (buttonClicked(a4Button)) {
